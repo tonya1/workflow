@@ -23,10 +23,14 @@ jobs:
           tags: newapp:latest
           platforms: linux/arm64
     
+      - name: can i run this
+        run: |
+            docker images
+
       - name: Save the image
         run: |
             docker save newapp:latest -o newapp.tar
-            
+
       - name: Compress the output
         run: |
             zstd newapp.tar -o newapp.tzst
