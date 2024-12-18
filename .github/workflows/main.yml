@@ -26,7 +26,6 @@ jobs:
     
       - shell: bash
         run: |
-            docker save -o newapp.tar newapp:latest 
             zstd newapp.tar -o newapp.tzst
 
       - name: Upload artifact
