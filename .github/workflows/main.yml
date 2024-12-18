@@ -25,7 +25,7 @@ jobs:
           outputs: type=oci,dest=newapp.tar
     
       - shell: bash
-          run: |
+        run: |
             zstd newapp.tar -o newapp.tzst
 
       - name: Upload artifact
