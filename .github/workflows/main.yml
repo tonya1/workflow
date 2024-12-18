@@ -22,7 +22,7 @@ jobs:
           push: false
           tags: myapp:latest
           platforms: linux/arm64
-          output: type=tar,dest=my_app.tar
+          outputs: type=tar,dest=my_app.tar
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
