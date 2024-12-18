@@ -22,9 +22,12 @@ jobs:
           push: false
           tags: newapp:latest
           platforms: linux/arm64
-          outputs: type=tar,dest=newapp.tar
     
-      - shell: bash
+      - name: Save the image
+        run: |
+            docker save newapp:latest -o newapp.tar
+            
+      - name: Compress the output
         run: |
             zstd newapp.tar -o newapp.tzst
 
