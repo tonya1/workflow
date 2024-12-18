@@ -10,10 +10,10 @@ jobs:
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-buildx-action@v3
 
       - name: Build 
         uses: docker/build-push-action@v6
@@ -21,15 +21,11 @@ jobs:
           context: .
           push: false
           tags: myapp:latest
-          platforms: linux/arm/v7
-
-      - shell: bash
-        run: |
-            docker save -o myapp.tar myapp:latest
-            zstd us_container.tar -o myapp_image.tzst
+          platforms: linux/arm64
+          output: --output type=tar,dest=my_app.tar
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: myapp_image
-          path: us_container
+          path: my_app.tar
