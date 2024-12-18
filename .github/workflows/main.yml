@@ -22,6 +22,7 @@ jobs:
           push: false
           tags: newapp:latest
           platforms: linux/arm64
+          load: true
     
       - name: can i run this
         run: |
